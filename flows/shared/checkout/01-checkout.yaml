@@ -53,3 +53,28 @@ appId: com.saucelabs.mydemoapp.android
 - tapOn: "To Payment"
 - waitForAnimationToEnd
 - assertVisible: "Enter a payment method"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/nameET"
+- inputText:
+    text: "John Doe"
+    clearPreviousContent: true
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/cardNumberET"
+- inputText: "4111111111111111"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/expirationDateET"
+- inputText: "03/30"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/securityCodeET"
+- inputText: "123"
+
+- hideKeyboard
+- tapOn: "Review Order"
+- waitForAnimationToEnd
+
+- tapOn: "Place Order"
+- waitForAnimationToEnd
+- assertVisible: "Thank you for your order"
