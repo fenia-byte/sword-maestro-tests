@@ -1,0 +1,40 @@
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+- waitForAnimationToEnd
+
+- tapOn:
+    text: "Don't Show Again"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Open side menu
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+
+- waitForAnimationToEnd
+
+# Assert menu options are visible
+- assertVisible: "Catalog"
+- assertVisible: "WebView"
+- assertVisible: "QR Code Scanner"
+- assertVisible: "Geo Location"
+- assertVisible: "Drawing"
+- assertVisible: "About"
+- assertVisible: "Reset App State"
+- assertVisible: "FingerPrint"
+- assertVisible: "Virtual USB"
+- assertVisible: "Crash app (debug)"
+- assertVisible: "Log In"
+
+# Close menu by tapping outside
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+
+- waitForAnimationToEnd
+
+# Assert we're back on catalog
+- assertVisible: "Products"

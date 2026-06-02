@@ -1,0 +1,32 @@
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+- waitForAnimationToEnd
+
+- tapOn:
+    text: "Don't Show Again"
+    optional: true
+
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- tapOn: "Log In"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/nameET"
+- inputText: "alice@example.com"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/passwordET"
+- inputText: "10203040"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/loginBtn"
+
+- waitForAnimationToEnd
+
+- assertVisible: "Sorry this user has been locked out."

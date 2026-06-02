@@ -1,0 +1,34 @@
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+
+- waitForAnimationToEnd
+
+- tapOn:
+    text: "Don't Show Again"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Assert catalog is loaded
+- assertVisible: "Products"
+
+# Tap on first product
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/productIV"
+
+- waitForAnimationToEnd
+
+# Assert product detail screen shows name, price, description
+- assertVisible: "Sauce Labs Backpack"
+- assertVisible: "$ 29.99"
+- assertVisible: "Add to cart"
+- scroll
+- assertVisible: "Product Highlights"
+
+# Go back and assert catalog is still there
+- pressKey: Back
+- waitForAnimationToEnd
+- assertVisible: "Products"
+- assertVisible: "Sauce Labs Backpack"

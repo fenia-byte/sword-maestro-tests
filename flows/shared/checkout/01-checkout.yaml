@@ -1,0 +1,55 @@
+appId: com.saucelabs.mydemoapp.android
+---
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+- tapOn:
+    text: "Don't Show Again"
+    optional: true
+- waitForAnimationToEnd
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- tapOn: "Log In"
+- waitForAnimationToEnd
+- assertVisible: "Username"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/nameET"
+- inputText: "bod@example.com"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/passwordET"
+- inputText: "10203040"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/loginBtn"
+- waitForAnimationToEnd
+- assertVisible: "Products"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/productIV"
+- waitForAnimationToEnd
+- tapOn: "Add to cart"
+- waitForAnimationToEnd
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/cartRL"
+- waitForAnimationToEnd
+- assertVisible: "My Cart"
+- tapOn: "Proceed To Checkout"
+- waitForAnimationToEnd
+- assertVisible: "Checkout"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/fullNameET"
+- inputText: "John Doe"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/address1ET"
+- inputText: "123 Test Street"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/cityET"
+- inputText: "Porto"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/zipET"
+- inputText: "4000-001"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/countryET"
+- inputText: "Portugal"
+- hideKeyboard
+- tapOn: "To Payment"
+- waitForAnimationToEnd
+- assertVisible: "Enter a payment method"

@@ -1,0 +1,20 @@
+appId: com.saucelabs.mydemoapp.android
+---
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- tapOn: "Log In"
+- waitForAnimationToEnd
+- assertVisible: "Username"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/nameET"
+- inputText: "bod@example.com"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/passwordET"
+- inputText: "10203040"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/loginBtn"
+- waitForAnimationToEnd
+- assertVisible: "Products"

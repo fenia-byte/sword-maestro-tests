@@ -1,0 +1,6 @@
+appId: com.saucelabs.mydemoapp.android
+---
+- tapOn:
+    text: "Don't Show Again"
+    optional: true
+- waitForAnimationToEnd
