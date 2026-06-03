@@ -1,0 +1,11 @@
+appId: com.saucelabs.mydemo.app.ios
+---
+# TC-LOGIN-01: Successful login with valid credentials (iOS)
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- runFlow: ../shared/helpers/ios-login-helper.yaml
+
+- assertVisible:
+    id: "title"

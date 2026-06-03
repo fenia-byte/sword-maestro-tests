@@ -1,0 +1,28 @@
+appId: com.saucelabs.mydemo.app.ios
+---
+# TC-NAV-02: Product detail screen shows name, price, description (iOS)
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- tapOn: "More"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "LogOut-menu-item"
+- waitForAnimationToEnd
+
+- tapOn: "bob@example.com"
+- waitForAnimationToEnd
+
+- tapOn:
+    point: "49%,82%"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "ProductItem"
+    index: 0
+- waitForAnimationToEnd
+
+- assertVisible: "Add to cart"
+- assertVisible: "$ 29.99"

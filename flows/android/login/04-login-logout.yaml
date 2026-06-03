@@ -1,0 +1,23 @@
+appId: com.saucelabs.mydemoapp.android
+---
+# TC-LOGIN-04: Login then logout clears session
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
+- runFlow: ../../shared/helpers/android-login-helper.yaml
+
+# Logout via menu
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- tapOn: "Log Out"
+- waitForAnimationToEnd
+- tapOn: "LOGOUT"
+- waitForAnimationToEnd
+
+# Assert session is cleared
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- assertVisible: "Log In"
+- assertNotVisible: "Log Out"

@@ -1,33 +1,23 @@
 appId: com.saucelabs.mydemoapp.android
 ---
+# TC-NAV-02: Product detail shows name, price, description; back returns to catalog
 - launchApp:
     clearState: true
-
 - waitForAnimationToEnd
 
-- tapOn:
-    text: "Don't Show Again"
-    optional: true
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
 
-- waitForAnimationToEnd
-
-# Assert catalog is loaded
 - assertVisible: "Products"
-
-# Tap on first product
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/productIV"
-
 - waitForAnimationToEnd
 
-# Assert product detail screen shows name, price, description
 - assertVisible: "Sauce Labs Backpack"
 - assertVisible: "$ 29.99"
 - assertVisible: "Add to cart"
 - scroll
 - assertVisible: "Product Highlights"
 
-# Go back and assert catalog is still there
 - pressKey: Back
 - waitForAnimationToEnd
 - assertVisible: "Products"

@@ -1,0 +1,11 @@
+appId: com.saucelabs.mydemoapp.android
+---
+# TC-LOGIN-01: Successful login with valid credentials
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
+- runFlow: ../../shared/helpers/android-login-helper.yaml
+
+- assertVisible: "Products"

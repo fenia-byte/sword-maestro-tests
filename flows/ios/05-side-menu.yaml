@@ -1,0 +1,21 @@
+appId: com.saucelabs.mydemo.app.ios
+---
+# TC-NAV-03: Side menu opens, shows expected options, closes correctly (iOS)
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- tapOn: "More"
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: "LogOut-menu-item"
+- assertVisible: "Webview"
+- assertVisible: "About"
+
+- tapOn: "Catalog"
+- waitForAnimationToEnd
+
+- assertNotVisible: "Webview"
+- assertVisible:
+    id: "title"

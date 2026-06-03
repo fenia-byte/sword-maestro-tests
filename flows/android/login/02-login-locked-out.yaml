@@ -1,0 +1,42 @@
+appId: com.saucelabs.mydemoapp.android
+---
+# TC-LOGIN-02: Locked account sees error and cannot proceed
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
+- runFlow: ../../shared/helpers/android-login-helper.yaml
+
+# Log out first
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- tapOn: "Log Out"
+- waitForAnimationToEnd
+- tapOn: "LOGOUT"
+- waitForAnimationToEnd
+
+# Now log in as locked user
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- tapOn: "Log In"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/nameET"
+- inputText:
+    text: "alice@example.com"
+    clearPreviousContent: true
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/passwordET"
+- inputText:
+    text: "10203040"
+    clearPreviousContent: true
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/loginBtn"
+- waitForAnimationToEnd
+
+- assertVisible: "Sorry this user has been locked out."
+- assertNotVisible: "Products"
