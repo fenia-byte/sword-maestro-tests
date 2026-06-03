@@ -1,23 +1,12 @@
 appId: com.saucelabs.mydemo.app.ios
 ---
 # TC-NAV-02: Product detail screen shows name, price, description (iOS)
+# Asserts back navigation returns to catalog with state preserved
 - launchApp:
     clearState: true
 - waitForAnimationToEnd
 
-- tapOn: "More"
-- waitForAnimationToEnd
-
-- tapOn:
-    id: "LogOut-menu-item"
-- waitForAnimationToEnd
-
-- tapOn: "bob@example.com"
-- waitForAnimationToEnd
-
-- tapOn:
-    point: "49%,82%"
-- waitForAnimationToEnd
+- runFlow: ../shared/helpers/ios-login-helper.yaml
 
 - tapOn:
     id: "ProductItem"
@@ -26,3 +15,10 @@ appId: com.saucelabs.mydemo.app.ios
 
 - assertVisible: "Add to cart"
 - assertVisible: "$ 29.99"
+
+# Back navigation returns to catalog
+- tapOn:
+    id: "BackButton Icons"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "ProductItem"
