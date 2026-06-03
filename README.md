@@ -70,6 +70,7 @@ maestro --device CDA7B182-4BD7-41E5-AE9E-4C28D5413528 test flows/ios/01-login-su
 
 ## Project Structure
 
+```
 flows/
 ├── android/
 │   ├── login/
@@ -90,12 +91,11 @@ flows/
 │   ├── 04-product-detail.yaml
 │   └── 05-side-menu.yaml
 └── shared/
-└── helpers/
-├── android-login-helper.yaml
-├── android-dismiss-popup-helper.yaml
-└── ios-login-helper.yaml
-
----
+    └── helpers/
+        ├── android-login-helper.yaml
+        ├── android-dismiss-popup-helper.yaml
+        └── ios-login-helper.yaml
+```
 
 ## Test Coverage
 
