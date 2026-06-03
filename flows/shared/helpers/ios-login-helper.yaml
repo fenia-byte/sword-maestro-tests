@@ -1,0 +1,16 @@
+appId: com.saucelabs.mydemo.app.ios
+---
+# iOS login helper - uses bob@example.com auto-fill to avoid keyboard issues
+# Usage: - runFlow: ../../shared/helpers/ios-login-helper.yaml
+- tapOn: "More"
+- waitForAnimationToEnd
+- tapOn:
+    id: "LogOut-menu-item"
+- waitForAnimationToEnd
+- tapOn: "bob@example.com"
+- waitForAnimationToEnd
+- tapOn:
+    point: "49%,82%"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "title"

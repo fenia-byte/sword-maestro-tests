@@ -1,0 +1,31 @@
+appId: com.saucelabs.mydemo.app.ios
+---
+# TC-LOGIN-02: Locked account sees error and cannot proceed
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- tapOn: "More"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "LogOut-menu-item"
+- waitForAnimationToEnd
+
+# Auto-fill credentials using bob first (no keyboard)
+- tapOn: "bob@example.com"
+- waitForAnimationToEnd
+
+# Now replace username with alice
+- tapOn:
+    point: "49%,36%"
+- waitForAnimationToEnd
+- inputText: "alice@example.com"
+- waitForAnimationToEnd
+
+# Tap Login by point while keyboard may still be open
+- tapOn:
+    point: "49%,88%"
+- waitForAnimationToEnd
+
+- assertVisible: "Sorry, this user has been locked out."

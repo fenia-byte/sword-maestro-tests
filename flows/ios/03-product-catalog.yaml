@@ -1,0 +1,26 @@
+appId: com.saucelabs.mydemo.app.ios
+---
+# TC-NAV-01: Catalog loads with products after login (iOS)
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- tapOn: "More"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "LogOut-menu-item"
+- waitForAnimationToEnd
+
+- tapOn: "bob@example.com"
+- waitForAnimationToEnd
+
+- tapOn:
+    point: "49%,82%"
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: "title"
+
+- assertVisible:
+    id: "ProductItem"

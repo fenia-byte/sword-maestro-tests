@@ -1,0 +1,23 @@
+appId: com.saucelabs.mydemoapp.android
+---
+# TC-NAV-03: Side menu opens, shows expected options, closes correctly
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- waitForAnimationToEnd
+
+- assertVisible: "Catalog"
+- assertVisible: "WebView"
+- assertVisible: "About"
+- assertVisible: "Log In"
+
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/menuIV"
+- waitForAnimationToEnd
+
+- assertVisible: "Products"

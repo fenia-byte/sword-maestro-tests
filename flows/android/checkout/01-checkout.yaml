@@ -1,32 +1,21 @@
 appId: com.saucelabs.mydemoapp.android
 ---
+# TC-CHECKOUT-01: Complete checkout happy path
 - launchApp:
     clearState: true
 - waitForAnimationToEnd
-- tapOn:
-    text: "Don't Show Again"
-    optional: true
-- waitForAnimationToEnd
-- tapOn:
-    id: "com.saucelabs.mydemoapp.android:id/menuIV"
-- tapOn: "Log In"
-- waitForAnimationToEnd
-- assertVisible: "Username"
-- tapOn:
-    id: "com.saucelabs.mydemoapp.android:id/nameET"
-- inputText: "bod@example.com"
-- tapOn:
-    id: "com.saucelabs.mydemoapp.android:id/passwordET"
-- inputText: "10203040"
-- tapOn:
-    id: "com.saucelabs.mydemoapp.android:id/loginBtn"
-- waitForAnimationToEnd
-- assertVisible: "Products"
+
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
+- runFlow: ../../shared/helpers/android-login-helper.yaml
+
+# Add product to cart
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/productIV"
 - waitForAnimationToEnd
 - tapOn: "Add to cart"
 - waitForAnimationToEnd
+
+# Go to cart
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/cartRL"
 - waitForAnimationToEnd
@@ -34,6 +23,8 @@ appId: com.saucelabs.mydemoapp.android
 - tapOn: "Proceed To Checkout"
 - waitForAnimationToEnd
 - assertVisible: "Checkout"
+
+# Shipping address
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/fullNameET"
 - inputText: "John Doe"
@@ -43,6 +34,8 @@ appId: com.saucelabs.mydemoapp.android
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/cityET"
 - inputText: "Porto"
+- hideKeyboard
+- waitForAnimationToEnd
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/zipET"
 - inputText: "4000-001"
@@ -53,3 +46,23 @@ appId: com.saucelabs.mydemoapp.android
 - tapOn: "To Payment"
 - waitForAnimationToEnd
 - assertVisible: "Enter a payment method"
+
+# Payment
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/nameET"
+- inputText: "John Doe"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/cardNumberET"
+- inputText: "4111111111111111"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/expirationDateET"
+- inputText: "03/30"
+- tapOn:
+    id: "com.saucelabs.mydemoapp.android:id/securityCodeET"
+- inputText: "123"
+- hideKeyboard
+- tapOn: "Review Order"
+- waitForAnimationToEnd
+- tapOn: "Place Order"
+- waitForAnimationToEnd
+- assertVisible: "Thank you for your order"

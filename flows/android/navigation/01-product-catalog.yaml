@@ -1,17 +1,12 @@
 appId: com.saucelabs.mydemoapp.android
 ---
+# TC-NAV-01: Catalog loads with at least one visible product
 - launchApp:
     clearState: true
-
 - waitForAnimationToEnd
 
-- tapOn:
-    text: "Don't Show Again"
-    optional: true
+- runFlow: ../../shared/helpers/android-dismiss-popup-helper.yaml
 
-- waitForAnimationToEnd
-
-# Assert catalog loads with products visible
 - assertVisible: "Products"
 - assertVisible: "Sauce Labs Backpack"
 - assertVisible: "$ 29.99"
