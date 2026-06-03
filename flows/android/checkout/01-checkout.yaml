@@ -28,21 +28,33 @@ appId: com.saucelabs.mydemoapp.android
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/fullNameET"
 - inputText: "John Doe"
+- hideKeyboard
+- waitForAnimationToEnd
+
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/address1ET"
 - inputText: "123 Test Street"
+- hideKeyboard
+- waitForAnimationToEnd
+
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/cityET"
 - inputText: "Porto"
 - hideKeyboard
 - waitForAnimationToEnd
+
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/zipET"
 - inputText: "4000-001"
+- hideKeyboard
+- waitForAnimationToEnd
+
 - tapOn:
     id: "com.saucelabs.mydemoapp.android:id/countryET"
 - inputText: "Portugal"
 - hideKeyboard
+- waitForAnimationToEnd
+
 - tapOn: "To Payment"
 - waitForAnimationToEnd
 - assertVisible: "Enter a payment method"
